@@ -1,3 +1,4 @@
+"use server";
 import { createClient } from "@/utils/supabase/server"
 
 // feel free to update these as needed
@@ -28,16 +29,10 @@ export type Response = {
     careerSwitchLikelihood: CAREER_SWITCH_LIKELIHOOD;
 }
 
-const createSurvey = async (response: Response, userId: string /* Add more params as needed */) => {
-    "use server";
+export const createSurvey = async (response: Response, userId: string /* Add more params as needed */) => {
     // HINT: this may require also creating a new industry and or profession
 }
 
-const getPaginateSurveys = async (page: number, limit: number) => {
+export const getPaginateSurveys = async (page: number, limit: number) => {
 
 }
-
-export const surveyService = {
-    createSurvey,
-    getPaginateSurveys
-};
