@@ -29,6 +29,7 @@ export type Response = {
 }
 
 const createSurvey = async (response: Response, userId: string /* Add more params as needed */) => {
+    "use server";
     // HINT: this may require also creating a new industry and or profession
 }
 
