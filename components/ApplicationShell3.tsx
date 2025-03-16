@@ -3,9 +3,6 @@
 import {
   Badge,
   Button,
-  DropdownMenuGroup,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   Input,
   Sidebar,
   SidebarContent,
@@ -20,10 +17,6 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
 } from "@relume_io/relume-ui";
 import {
   BiArchive,
@@ -40,6 +33,21 @@ import {
   BiStar,
   BiPlusCircle,
 } from "react-icons/bi";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 import { MdTrendingUp } from "react-icons/md";
 import { RxChevronDown, RxChevronRight, RxCross2 } from "react-icons/rx";
 import React, { useState } from "react";
@@ -178,12 +186,46 @@ const TopbarActions = ({
         <BiSearch className="size-6" />
       </button>
 
+      {/* New Post Button */}
       <button className="relative border-none text-off-white">
         <div className="absolute bottom-auto left-auto right-2 top-2 size-2 rounded-full" />
         <BiPlusCircle className="size-6" />
       </button>
 
+      {/* Notification Button */}
+      <Button variant="ghost" className="p-2">
+        <BiBell className="size-6" />
+      </Button>
+
+      {/* Account Button */}
       <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="p-0">
+            <img
+              src="https://d22po4pjz3o32e.cloudfront.net/avatar-image.svg"
+              alt="Avatar"
+              className="size-10 rounded-full object-cover"
+            />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          className="bg-sidebar text-off-white border-none w-56"
+          align="end"
+        >
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuSeparator className="bg-secondary rounded-xl" />
+          <DropdownMenuGroup>
+            <DropdownMenuItem className="hover:bg-slate/50 active:bg-slate rounded-xl">
+              Sign In
+            </DropdownMenuItem>
+            <DropdownMenuItem className="hover:bg-slate/50 active:bg-slate rounded-xl">
+              Log Out
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      {/* <DropdownMenu>
         <DropdownMenuTrigger className="relative border-none text-off-white">
           <div className="absolute bottom-auto left-auto right-2 top-2 size-2 rounded-full bg-off-white" />
           <BiBell className="size-6" />
@@ -246,14 +288,7 @@ const TopbarActions = ({
             </Button>
           </div>
         </DropdownMenuContent>
-      </DropdownMenu>
-
-      {/* AVATAR BUTTON */}
-      <img
-        src="https://d22po4pjz3o32e.cloudfront.net/avatar-image.svg"
-        alt="Avatar"
-        className="size-10 ml-2 rounded-full object-cover"
-      />
+      </DropdownMenu> */}
     </div>
   );
 };
