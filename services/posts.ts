@@ -1,10 +1,9 @@
 "use server";
 import { createClient } from "@/utils/supabase/server"
+import { SupabaseClient } from "@supabase/supabase-js";
 
-const validateIndustry = async (industry: string) => {
-    const supabase = createClient();
-
-    const { data: existingIndustry, error: existingIndustryError } = await (await supabase)
+const validateIndustry = async (industry: string, client: SupabaseClient) => {
+    const { data: existingIndustry, error: existingIndustryError } = await client
         .from("industries")
         .select("name")
         .eq("name", industry)
@@ -15,7 +14,7 @@ const validateIndustry = async (industry: string) => {
 
     if (!existingIndustry || existingIndustry.length === 0) {
 
-        const { data: newIndustry, error: newIndustryError } = await (await supabase)
+        const { data: newIndustry, error: newIndustryError } = await client
             .from("industries")
             .insert({ name: industry })
             .select();
@@ -29,11 +28,8 @@ const validateIndustry = async (industry: string) => {
     return existingIndustry[0].name;
 }
 
-
-const validate = async (profession: string, industry: string) => {
-    const supabase = createClient();
-
-    const { data, error } = await (await supabase)
+const validate = async (profession: string, industry: string, client: SupabaseClient) => {
+    const { data, error } = await client
         .from("professions")
         .select("id")
         .eq("title", profession)
@@ -43,9 +39,9 @@ const validate = async (profession: string, industry: string) => {
         throw new Error(error.message);
 
     if (!data || data.length === 0) {
-        const industryName = await validateIndustry(industry);
+        const industryName = await validateIndustry(industry, client);
 
-        const { data: newProfession, error: newProfessionError } = await (await supabase)
+        const { data: newProfession, error: newProfessionError } = await client
             .from("professions")
             .insert({ title: profession, industry: industryName })
             .select();
@@ -60,10 +56,10 @@ const validate = async (profession: string, industry: string) => {
 }
 
 export const createPostAction = async (title: string, content: string, company: string, createdAt: string, profession: string, industry: string, userId?: string) => {
-    const supabase = createClient();
-    const professionId = await validate(profession, industry);
+    const supabase = await createClient();
+    const professionId = await validate(profession, industry, supabase);
 
-    const { data, error } = await (await supabase)
+    const { data, error } = await supabase
         .from('posts')
         .insert({ company, industry, title, content, user_id: userId, profession_id: professionId, created_at: createdAt })
         .select();
@@ -75,9 +71,9 @@ export const createPostAction = async (title: string, content: string, company: 
 }
 
 export const updatePostAction = async (id: number, updatedValues: { title?: string, content?: string, company?: string, industry?: string }) => {
-    const supabase = createClient();
+    const supabase = await createClient();
 
-    const { data, error } = await (await supabase)
+    const { data, error } = await supabase
         .from('posts')
         .update(updatedValues)
         .eq('id', id)
@@ -90,9 +86,9 @@ export const updatePostAction = async (id: number, updatedValues: { title?: stri
 }
 
 export const deletePostAction = async (id: number) => {
-    const supabase = createClient();
+    const supabase = await createClient();
 
-    const { data, error } = await (await supabase)
+    const { data, error } = await supabase
         .from('posts')
         .delete()
         .eq('id', id)
@@ -105,9 +101,9 @@ export const deletePostAction = async (id: number) => {
 }
 
 export const getPaginatedPosts = async (page: number, limit: number) => {
-    const supabase = createClient();
+    const supabase = await createClient();
 
-    const { data, error } = await (await supabase)
+    const { data, error } = await supabase
         .from('posts')
         .select('*')
         .range(page, limit);
