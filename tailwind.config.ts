@@ -17,8 +17,9 @@ const config = {
         secondary: "#252526",
         sidebar: "#1C1C1F",
         "off-white": "#DCDCDC",
-      }
-    }
+        "primary-blue": "#265FC9",
+      },
+    },
   },
   presets: [require("@relume_io/relume-tailwind")],
 } satisfies Config;
