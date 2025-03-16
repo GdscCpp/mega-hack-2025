@@ -12,8 +12,6 @@ export const metadata = {
 
 import "./globals.css";
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,9 +20,7 @@ export default function RootLayout({
   return (
     <html>
       <body className="bg-dark">
-        <ApplicationShell3>
-          hi
-        </ApplicationShell3>
+        <ApplicationShell3>hi</ApplicationShell3>
       </body>
     </html>
   );
