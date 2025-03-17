@@ -11,6 +11,7 @@ export const metadata = {
 };
 
 import "./globals.css";
+import { Feed } from "@/components/Feed";
 
 export default function RootLayout({
   children,
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html>
       <body className="bg-dark">
-        <ApplicationShell3>hi</ApplicationShell3>
+        <ApplicationShell3>
+          <Feed />
+        </ApplicationShell3>
       </body>
     </html>
   );
