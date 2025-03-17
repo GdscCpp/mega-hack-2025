@@ -89,8 +89,8 @@ export const ApplicationShell3 = ({
           <Topbar />
           <div className="h-[calc(100vh-4.5rem)] overflow-auto">
             <div className="container px-6 py-8 md:px-8 md:py-10 lg:py-12">
-              <div className="grid grid-cols-1 gap-12">
-                <div className="flex h-screen items-center justify-center py-6 text-center text-off-white">
+              <div className="h-[calc(100vh-4.5rem)] overflow-auto flex justify-center">
+                <div className="w-full max-w-2xl px-6 py-8 md:px-8 md:py-10 lg:py-12">
                   {children}
                 </div>
               </div>
