@@ -1,104 +1,43 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+## Inspiration
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+We were inspired by the struggle of individuals facing the growing impact of artificial intelligence on their careers and lives. We recognized the need for a platform where people could share their experiences and connect with others navigating similar challenges, especially the feeling of being "replaced by AI."
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+## What it does
 
-## Features
+AmICookedChat is a platform that allows users to share their personal stories and experiences related to the impact of AI on their livelihoods. It provides a feed of forum posts where individuals can discuss whether they feel they've been replaced or significantly impacted by AI advancements. Users can read, share, and engage with these stories, fostering a sense of community and shared understanding.
+## How we built it
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+We built AmICookedChat using:
 
-## Demo
+    Next.js: for the frontend framework, enabling server-side rendering and efficient routing.
+    Tailwind CSS: for styling, allowing for rapid and responsive UI development.
+    Supabase: for the backend, providing database management, authentication, and real-time updates. We used Supabase to store and retrieve forum posts, manage user data, and handle interactions.
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+## Challenges we ran into
 
-## Deploy to Vercel
+    Database Integration (Supabase): This was the team's first experience working with a database, leading to challenges in understanding database schemas, query optimization, and data security.
+    Next.js Learning Curve: Most of the team were new to Next.js, requiring significant time to grasp concepts like server-side rendering, server actions, and data fetching.
 
-Vercel deployment will guide you through creating a Supabase account and project.
+## Accomplishments that we're proud of
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+    Successfully deploying a functional platform with a feed of forum posts, despite being new to the technologies involved.
+    Learning and implementing database integration with Supabase.
+    Creating a user-friendly interface using Tailwind CSS.
+    Building a platform that addresses a timely and relevant issue.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+## What we learned
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+    The power and efficiency of Next.js for building modern web applications.
+    The ease of use and versatility of Supabase for backend development.
+    The benefits of Tailwind CSS for rapid UI development.
+    The importance of collaborative learning and problem-solving in a team environment.
+    The basics of database structure and function.
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+## What's next for AmICookedChat
 
-## Clone and run locally
-
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
-
-2. Create a Next.js app using the Supabase Starter template npx command
-
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
-
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
-
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
-
-3. Use `cd` to change into the app's directory
-
-   ```bash
-   cd with-supabase-app
-   ```
-
-4. Rename `.env.example` to `.env.local` and update the following:
-
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
-   ```
-
-   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
-
-5. You can now run the Next.js local development server:
-
-   ```bash
-   npm run dev
-   ```
-
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
-
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
-
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
-
-## Feedback and issues
-
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
-
-## More Supabase examples
-
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+    Implementing user profiles and commenting functionality.
+    Adding search and filtering options to the feed.
+    Developing a robust user authentication and moderation system.
+    Expanding the platform to include resources and support for individuals affected by AI.
+    Adding categorization of posts.
+    Adding the ability to upvote posts.
